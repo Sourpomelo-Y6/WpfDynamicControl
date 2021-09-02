@@ -22,7 +22,6 @@ namespace WpfDynamicControl
     public partial class MainWindow : Window
     {
         int iCount = 0;
-        double MaxWidth = 0.0;
         
         public MainWindow()
         {
@@ -33,54 +32,28 @@ namespace WpfDynamicControl
         {
             iCount++;
             if (iCount > 10) return;
-            
-            DockPanel dp = new DockPanel() 
-            { 
-                LastChildFill = true
-            };
+
+            gridMain.RowDefinitions.Add(new RowDefinition());
 
             Button btn = new Button()
             {
                 Height = 23,
-                Margin = new Thickness(5,5,5,5),
-                Content = "Test" + iCount.ToString()
+                Margin = new Thickness(5, 5, 5, 5),
+                Content = "Test" + iCount.ToString(),
             };
-            dp.Children.Add(btn);
+            gridMain.Children.Add(btn);
+            Grid.SetColumn(btn, 0);
+            Grid.SetRow(btn, iCount - 1);
 
-            TextBox tb = new TextBox() 
-            { 
+            TextBox tb = new TextBox()
+            {
                 Height = 23,
                 Margin = new Thickness(5, 5, 5, 5)
             };
-            dp.Children.Add(tb);
-
-            spMain.Children.Add(dp);
-
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                tb.Text = btn.ActualWidth.ToString();
-
-                if (btn.ActualWidth > MaxWidth) 
-                {
-                    MaxWidth = btn.ActualWidth;
-                }
-
-                foreach (var childdp in spMain.Children) 
-                {
-                    if(childdp is DockPanel)
-                    foreach (var ccdp in ((DockPanel)childdp).Children) 
-                    {
-                        if (ccdp is Button) 
-                        {
-                                ((Button)ccdp).Width = MaxWidth; 
-                        }
-                    }
-                }
-
-            }),
-            DispatcherPriority.Loaded);
-
-            
-        }
+            gridMain.Children.Add(tb);
+            Grid.SetColumn(tb, 1);
+            Grid.SetRow(tb, iCount - 1);
+        }            
+        
     }
 }

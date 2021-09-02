@@ -5,14 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfDynamicControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel x:Name="spMain">
-        <DockPanel>
-            <Button x:Name="btnADD" Height="23" Width="100" Margin="5,5,5,5" Content="ADD" HorizontalAlignment="Left" Click="btnADD_Click"/>
-        </DockPanel>
-        <DockPanel LastChildFill="True">
-            <Button Height="23" Width="100" Margin="5,5,5,5" Content="ADD"/>
-            <TextBox Height="23" Margin="5,5,5,5"/>
-        </DockPanel>
-    </StackPanel>
+        Title="WpfDynamicControl" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"/>
+            <RowDefinition/>
+            <RowDefinition Height="23"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menuMain" Grid.Row="0">
+            <MenuItem Header="File" >
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Option"/>
+        </Menu>
+        <StackPanel x:Name="stackpanelMain" Grid.Row="1">
+
+            <DockPanel>
+                <Button x:Name="btnADD" Height="23" Width="100" Margin="5,5,5,5" Content="ADD" HorizontalAlignment="Left" Click="btnADD_Click"/>
+            </DockPanel>
+            <!--<DockPanel LastChildFill="True">
+                <Button Height="23" Width="100" Margin="5,5,5,5" Content="ADD"/>
+                <TextBox Height="23" Margin="5,5,5,5"/>
+            </DockPanel>-->
+            <Grid x:Name="gridMain">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                </Grid.RowDefinitions>
+            </Grid>
+        </StackPanel>
+        <StatusBar Grid.Row="2">
+            <StatusBarItem x:Name="StatusBarText1" Content="StatusBarText1" Height="23" VerticalAlignment="Center"/>
+        </StatusBar>
+    </Grid>
 </Window>
