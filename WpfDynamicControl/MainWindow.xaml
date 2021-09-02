@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfDynamicControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDynamicControl"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel x:Name="spMain">
+        <DockPanel>
+            <Button x:Name="btnADD" Height="23" Width="100" Margin="5,5,5,5" Content="ADD" HorizontalAlignment="Left" Click="btnADD_Click"/>
+        </DockPanel>
+        <DockPanel LastChildFill="True">
+            <Button Height="23" Width="100" Margin="5,5,5,5" Content="ADD"/>
+            <TextBox Height="23" Margin="5,5,5,5"/>
+        </DockPanel>
+    </StackPanel>
+</Window>
